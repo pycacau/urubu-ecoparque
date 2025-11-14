@@ -13,12 +13,23 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        body: ['Poppins', 'sans-serif'],
+        heading: ['Playfair Display', 'serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        nature: {
+          green: "hsl(var(--nature-green))",
+          brown: "hsl(var(--nature-brown))",
+          earth: "hsl(var(--nature-earth))",
+          leaf: "hsl(var(--nature-leaf))",
+          sky: "hsl(var(--nature-sky))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
