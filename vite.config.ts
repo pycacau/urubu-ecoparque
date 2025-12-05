@@ -15,4 +15,14 @@ export default defineConfig(({ mode }) => ({
     },
   },
   assetsInclude: ["**/*.PNG", "**/*.png", "**/*.JPG", "**/*.jpg", "**/*.JPEG", "**/*.jpeg"],
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
 }));
