@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ImageGallery from "@/components/ImageGallery";
-import { FallingLeaves } from "@/components/NatureEffects";
+import { FallingLeaves, NatureParticles } from "@/components/NatureEffects";
 import heroImage from "@/assets/hero-ecopark.jpg";
 import activitiesImage from "@/assets/activities.jpg";
 import casalImage from "@/assets/party-venue.jpg";
@@ -285,52 +285,60 @@ const Urubudega = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="pt-32 pb-20">
-        <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-16 relative">
-            <FallingLeaves className="opacity-20" />
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-nature-brown to-nature-earth rounded-2xl mb-6 shadow-xl relative z-10">
-              <ShoppingBag className="w-10 h-10 text-white" />
-            </div>
-            <h1 className="text-5xl md:text-6xl font-heading font-bold text-foreground mb-6 relative z-10">
-              Urubudega
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto relative z-10">
-              Cardápio completo com pratos regionais, bebidas e muito mais!
-            </p>
+      {/* Hero Section */}
+      <section className="relative pt-20 sm:pt-24 md:pt-28 h-[50vh] min-h-[350px] flex items-center justify-center overflow-hidden gradient-nature-brown">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
+        <FallingLeaves className="opacity-15" />
+        <NatureParticles className="opacity-10" />
+        <div className="relative z-10 container mx-auto px-4 text-center" style={{ marginTop: '80px' }}>
+          <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-nature-brown to-nature-earth rounded-2xl mb-3 sm:mb-4 md:mb-6 shadow-2xl border-2 border-white/30 backdrop-blur-sm">
+            <ShoppingBag className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-xl" />
           </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-3 sm:mb-4 md:mb-6 px-2" style={{ textShadow: '0 6px 30px rgba(0,0,0,0.9), 0 3px 15px rgba(0,0,0,0.8), 0 1px 5px rgba(0,0,0,0.7)' }}>
+            Urubudega
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-2xl mx-auto px-2 font-semibold" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.8), 0 1px 5px rgba(0,0,0,0.7)' }}>
+            Cardápio completo com pratos regionais, bebidas e muito mais!
+          </p>
+        </div>
+      </section>
+      
+      <div className="pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20">
+        <div className="container mx-auto px-4 sm:px-6">
 
           {/* Menu Sections */}
-          <div className="space-y-12 mb-16">
+          <div className="space-y-8 sm:space-y-10 md:space-y-12 mb-12 sm:mb-16">
             {menuSections.map((section, sectionIndex) => (
-              <div key={sectionIndex}>
-                <div className="flex items-center gap-3 mb-6">
-                  <section.icon className="w-8 h-8 text-nature-brown" />
-                  <h2 className="text-3xl font-heading font-bold text-foreground">
+              <div key={sectionIndex} className="relative">
+                <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6 pb-3 border-b-2 border-nature-brown/20">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-nature-brown to-nature-earth rounded-xl flex items-center justify-center shadow-lg">
+                    <section.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground">
                     {section.title}
                   </h2>
                 </div>
                 
                 {section.subSections ? (
-                  <div className="space-y-8">
+                  <div className="space-y-6 sm:space-y-8">
                     {section.subSections.map((subSection, subIndex) => (
                       <div key={subIndex}>
-                        <h3 className="text-xl font-heading font-bold text-foreground mb-4">
+                        <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground mb-3 sm:mb-4 px-2">
                           {subSection.title}
                         </h3>
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                           {subSection.items.map((item, itemIndex) => (
-                            <Card key={itemIndex} className="card-nature">
-                              <CardContent className="p-4">
-                                <div className="flex justify-between items-start mb-2">
-                                  <div className="flex-1">
-                                    <h4 className="font-bold text-foreground">{item.name}</h4>
+                            <Card key={itemIndex} className="card-nature hover:shadow-xl transition-all duration-300">
+                              <CardContent className="p-4 sm:p-5">
+                                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-bold text-foreground text-base sm:text-lg">{item.name}</h4>
                                     {item.description && (
-                                      <p className="text-sm text-muted-foreground mt-1">{item.description}</p>
+                                      <p className="text-sm text-muted-foreground mt-1 break-words">{item.description}</p>
                                     )}
                                   </div>
-                                  <span className="text-lg font-bold text-primary ml-4">{item.price}</span>
+                                  <span className="text-lg sm:text-xl font-bold text-nature-brown ml-0 sm:ml-4 flex-shrink-0">{item.price}</span>
                                 </div>
                               </CardContent>
                             </Card>
@@ -340,32 +348,35 @@ const Urubudega = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                     {section.items.map((item, itemIndex) => (
-                      <Card key={itemIndex} className="card-nature">
-                        <CardContent className="p-4">
-                          <div className="flex justify-between items-start mb-2">
-                            <div className="flex-1">
-                              <h4 className="font-bold text-foreground">{item.name}</h4>
+                      <Card key={itemIndex} className="card-nature hover:shadow-xl transition-all duration-300">
+                        <CardContent className="p-4 sm:p-5">
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-bold text-foreground text-base sm:text-lg break-words">{item.name}</h4>
                               {item.description && (
-                                <p className="text-sm text-muted-foreground mt-1">{item.description}</p>
+                                <p className="text-sm text-muted-foreground mt-1 break-words">{item.description}</p>
                               )}
                             </div>
-                            <span className="text-lg font-bold text-primary ml-4">{item.price}</span>
+                            <span className="text-lg sm:text-xl font-bold text-nature-brown ml-0 sm:ml-4 flex-shrink-0">{item.price}</span>
                           </div>
                         </CardContent>
                       </Card>
                     ))}
                     {section.guarnicoes && (
-                      <div className="md:col-span-2 lg:col-span-3 mt-4">
-                        <h3 className="text-xl font-heading font-bold text-foreground mb-4">GUARNIÇÕES</h3>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      <div className="sm:col-span-2 lg:col-span-3 mt-6">
+                        <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground mb-4 flex items-center gap-2">
+                          <div className="w-1 h-6 bg-nature-brown rounded-full"></div>
+                          GUARNIÇÕES
+                        </h3>
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                           {section.guarnicoes.map((guarnicao, gIndex) => (
-                            <Card key={gIndex} className="card-nature">
+                            <Card key={gIndex} className="card-nature hover:shadow-lg transition-all duration-300">
                               <CardContent className="p-4">
                                 <div className="flex justify-between items-center">
-                                  <span className="font-medium text-foreground">{guarnicao.name}</span>
-                                  <span className="font-bold text-primary">{guarnicao.price}</span>
+                                  <span className="font-medium text-foreground text-sm sm:text-base">{guarnicao.name}</span>
+                                  <span className="font-bold text-nature-brown text-base sm:text-lg">{guarnicao.price}</span>
                                 </div>
                               </CardContent>
                             </Card>
@@ -389,29 +400,29 @@ const Urubudega = () => {
           </div>
 
           {/* Info Section */}
-          <Card className="p-8 md:p-12 bg-gradient-to-br from-nature-brown/10 to-nature-earth/10 border-2 border-nature-brown/20">
-            <div className="grid md:grid-cols-2 gap-8">
+          <Card className="p-6 sm:p-8 md:p-12 bg-gradient-to-br from-nature-brown/10 to-nature-earth/10 border-2 border-nature-brown/20 mx-2 sm:mx-0">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               <div>
-                <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-3 sm:mb-4">
                   Horário de Funcionamento
                 </h2>
-                <div className="space-y-2 text-muted-foreground">
-                  <p className="flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-primary" />
-                    Localizada na entrada do parque
+                <div className="space-y-2 text-sm sm:text-base text-muted-foreground">
+                  <p className="flex items-center gap-2 flex-wrap">
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                    <span>Localizada na entrada do parque</span>
                   </p>
                   <p>Segunda a Sexta: 8h às 18h</p>
                   <p>Sábado e Domingo: 8h às 19h</p>
                 </div>
               </div>
               <div>
-                <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-3 sm:mb-4">
                   Entre em Contato
                 </h2>
-                <div className="space-y-2 text-muted-foreground">
-                  <p className="flex items-center gap-2">
-                    <Phone className="w-5 h-5 text-primary" />
-                    (11) 98765-4321
+                <div className="space-y-2 text-sm sm:text-base text-muted-foreground">
+                  <p className="flex items-center gap-2 flex-wrap">
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                    <span>(85) 99731-0329</span>
                   </p>
                   <p>Para encomendas especiais ou produtos em maior quantidade, entre em contato conosco!</p>
                 </div>

@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ImageGallery from "@/components/ImageGallery";
 import { FallingLeaves, NatureParticles, WaterWaves } from "@/components/NatureEffects";
-import { Calendar, PartyPopper, Mountain, Trees, Waves, Bird, ShoppingBag, Coffee, Utensils, Plane, Eye, Baby, Sprout } from "lucide-react";
+import { Calendar, PartyPopper, Mountain, Trees, Waves, Bird, ShoppingBag, Coffee, Utensils, Plane, Eye, Baby, Sprout, ChevronDown } from "lucide-react";
 import heroImage from "@/assets/hero-ecopark.jpg";
 import activitiesImage from "@/assets/activities.jpg";
 import casalImage from "@/assets/party-venue.jpg";
@@ -151,18 +151,23 @@ const Index = () => {
         <FallingLeaves className="opacity-40" />
         <WaterWaves className="opacity-30" />
         
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="animate-fade-in-up">
-            {/* Overlay escuro para melhor contraste do texto */}
-            <div className="inline-block bg-black/60 backdrop-blur-md px-8 py-6 rounded-2xl mb-6 border border-white/20 shadow-2xl">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white drop-shadow-2xl animate-fade-in-up mb-4" style={{ animationDelay: "0.1s" }}>
-                Urubu Ecoparque
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto text-white/95 drop-shadow-lg font-medium animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-                Viva experiências únicas em contato com a natureza. Diversão, aventura e memórias inesquecíveis!
-              </p>
+        <div className="relative z-10 container mx-auto px-4 text-center flex flex-col items-center justify-center min-h-full">
+          <div className="animate-fade-in-up w-full flex flex-col items-center">
+            {/* Container com texto - centralizado */}
+            <div className="relative mb-8 sm:mb-10 md:mb-12 w-full max-w-4xl flex flex-col items-center">
+              {/* Placa de madeira para o texto - centralizada */}
+              <div className="relative wooden-sign px-5 py-4 sm:px-7 sm:py-5 md:px-9 md:py-7 lg:px-12 lg:py-9 rounded-xl sm:rounded-2xl w-full max-w-3xl mx-auto">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-heading font-bold text-foreground drop-shadow-lg animate-fade-in-up mb-2 sm:mb-3 md:mb-4 relative z-10 leading-tight text-center" style={{ animationDelay: "0.1s" }}>
+                  Urubu Ecoparque
+                </h1>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-2xl mx-auto text-foreground/90 drop-shadow-md font-medium animate-fade-in-up relative z-10 px-1 sm:px-2 text-center" style={{ animationDelay: "0.2s" }}>
+                  Viva experiências únicas em contato com a natureza. Diversão, aventura e memórias inesquecíveis!
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+            
+            {/* Botão centralizado */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up w-full" style={{ animationDelay: "0.4s" }}>
               <Link to="/entradas" className="touch-feedback">
                 <Button size="lg" variant="outline" className="text-base sm:text-lg px-8 sm:px-10 bg-primary/90 backdrop-blur-sm border-2 border-white text-white hover:bg-primary transition-all hover:scale-105 active:scale-95 shadow-xl font-bold">
                   Entradas
@@ -172,35 +177,33 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center p-2 backdrop-blur-sm">
-            <div className="w-1 h-3 bg-white/70 rounded-full animate-pulse-slow"></div>
-          </div>
+        {/* Scroll Indicator - seta simples para baixo */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
+          <ChevronDown className="w-8 h-8 text-white/90 animate-scroll-down drop-shadow-lg" />
         </div>
       </section>
 
       {/* Features Section */}
       <section 
-        className="py-20 sm:py-24 bg-gradient-to-b from-muted/40 via-muted/30 to-background bg-leaf-pattern relative overflow-hidden"
+        className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-muted/40 via-muted/30 to-background bg-leaf-pattern relative overflow-hidden"
         ref={(el) => (sectionRefs.current.features = el)}
       >
         <NatureParticles className="opacity-25" />
         <FallingLeaves className="opacity-20" />
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className={cn(
-            "text-center mb-12 sm:mb-16 transition-all duration-700",
+            "text-center mb-10 sm:mb-12 md:mb-16 transition-all duration-700",
             isVisible.features ? "animate-fade-in-up opacity-100" : "opacity-0"
           )}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-3 sm:mb-4 px-2">
               O que temos
             </h2>
-            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2">
               Descubra todas as atividades e experiências que preparamos para você
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {features.map((feature, index) => (
               <Card 
                 key={index} 
@@ -229,24 +232,24 @@ const Index = () => {
 
       {/* Activities Section */}
       <section 
-        className="py-20 sm:py-24 gradient-nature-forest relative overflow-hidden"
+        className="py-16 sm:py-20 md:py-24 gradient-nature-forest relative overflow-hidden"
         ref={(el) => (sectionRefs.current.activities = el)}
       >
         <WaterWaves className="opacity-25" />
         <NatureParticles className="opacity-20" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <div className={cn(
               "transition-all duration-700",
               isVisible.activities ? "animate-slide-in-left opacity-100" : "opacity-0"
             )}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 sm:mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-3 sm:mb-4 md:mb-6 px-2">
                 Aventuras para toda a família
               </h2>
-              <p className="text-muted-foreground text-base sm:text-lg mb-6">
+              <p className="text-muted-foreground text-sm sm:text-base md:text-lg mb-4 sm:mb-6 px-2">
                 No Urubu Ecoparque, oferecemos atividades para todas as idades. Desde trilhas leves até aventuras radicais, sempre em harmonia com a natureza.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 sm:mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6 md:mb-8 px-2">
                 {features.map((feature, i) => (
                   <div key={i} className="flex items-start text-foreground text-sm sm:text-base">
                     <div className="w-5 h-5 sm:w-6 sm:h-6 bg-primary/20 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
@@ -309,13 +312,13 @@ const Index = () => {
 
       {/* Party Section */}
       <section 
-        className="py-20 sm:py-24 bg-gradient-to-b from-background via-muted/30 to-muted/40 bg-leaf-pattern relative overflow-hidden"
+        className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-background via-muted/30 to-muted/40 bg-leaf-pattern relative overflow-hidden"
         ref={(el) => (sectionRefs.current.party = el)}
       >
         <FallingLeaves className="opacity-30" />
         <NatureParticles className="opacity-20" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <div className={cn(
               "order-2 md:order-1 relative transition-all duration-700",
               isVisible.party ? "animate-slide-in-left opacity-100" : "opacity-0"
@@ -337,13 +340,13 @@ const Index = () => {
               "order-1 md:order-2 transition-all duration-700",
               isVisible.party ? "animate-slide-in-right opacity-100" : "opacity-0"
             )}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 sm:mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-3 sm:mb-4 md:mb-6 px-2">
                 Comemore em meio à natureza
               </h2>
-              <p className="text-muted-foreground text-base sm:text-lg mb-6">
+              <p className="text-muted-foreground text-sm sm:text-base md:text-lg mb-4 sm:mb-6 px-2">
                 Transforme sua festa em uma experiência única! Oferecemos espaços completos para aniversários, confraternizações e eventos corporativos.
               </p>
-              <div className="space-y-4 mb-6 sm:mb-8">
+              <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6 md:mb-8 px-2">
                 <div className="flex items-start">
                   <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-primary mr-3 mt-1 flex-shrink-0" />
                   <div>
@@ -371,29 +374,29 @@ const Index = () => {
 
       {/* Urubudega Section */}
       <section 
-        className="py-20 sm:py-24 bg-gradient-to-br from-nature-brown/10 via-muted/30 to-nature-earth/10 relative overflow-hidden"
+        className="py-16 sm:py-20 md:py-24 gradient-nature-brown relative overflow-hidden"
         ref={(el) => (sectionRefs.current.urubudega = el)}
       >
         <FallingLeaves className="opacity-30" />
         <NatureParticles className="opacity-20" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <div className={cn(
               "transition-all duration-700",
               isVisible.urubudega ? "animate-slide-in-left opacity-100" : "opacity-0"
             )}>
-              <div className="inline-flex items-center gap-3 mb-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-nature-brown to-nature-earth rounded-xl flex items-center justify-center shadow-lg">
-                  <ShoppingBag className="w-8 h-8 text-white" />
+              <div className="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 px-2">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-nature-brown to-nature-earth rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+                  <ShoppingBag className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
                   Urubudega
                 </h2>
               </div>
-              <p className="text-muted-foreground text-base sm:text-lg mb-6">
+              <p className="text-muted-foreground text-sm sm:text-base md:text-lg mb-4 sm:mb-6 px-2">
                 Nossa lojinha especial com produtos naturais, artesanatos locais, lembranças do parque e delícias regionais. Leve um pedacinho do Urubu Ecoparque para casa!
               </p>
-              <ul className="space-y-3 mb-6 sm:mb-8">
+              <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 md:mb-8 px-2">
                 {["Produtos naturais e orgânicos", "Artesanatos da região", "Lembranças exclusivas", "Doces e quitutes caseiros", "Bebidas artesanais"].map((item, i) => (
                   <li key={i} className="flex items-center text-foreground text-sm sm:text-base">
                     <div className="w-5 h-5 sm:w-6 sm:h-6 bg-nature-brown/20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
@@ -435,30 +438,41 @@ const Index = () => {
 
       {/* CTA Section */}
       <section 
-        className="py-20 sm:py-24 gradient-nature-sunset relative overflow-hidden"
+        className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-primary via-primary/90 to-accent relative overflow-hidden"
         ref={(el) => (sectionRefs.current.cta = el)}
       >
-        <NatureParticles className="opacity-30" />
-        <FallingLeaves className="opacity-25" />
-        <WaterWaves className="opacity-20" />
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse-slow"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
-        </div>
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}
+        ></div>
+        <NatureParticles className="opacity-20" />
+        <FallingLeaves className="opacity-15" />
         <div className={cn(
-          "container mx-auto px-4 text-center text-white relative z-10 transition-all duration-700",
+          "container mx-auto px-4 sm:px-6 text-center relative z-10 transition-all duration-700",
           isVisible.cta ? "animate-fade-in-up opacity-100" : "opacity-0"
         )}>
-          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 sm:mb-6 drop-shadow-lg">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-block mb-6">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto shadow-xl border border-white/30">
+                <Mountain className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
+              </div>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 sm:mb-6 drop-shadow-2xl">
               Pronto para a aventura?
             </h2>
-            <p className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto opacity-95 font-medium">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 max-w-2xl mx-auto text-white/95 font-medium leading-relaxed">
               Garanta sua entrada agora e venha viver momentos inesquecíveis em contato com a natureza!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/entradas" className="touch-feedback">
+                <Button size="lg" className="text-base sm:text-lg px-8 sm:px-10 bg-white text-primary hover:bg-white/95 transition-all hover:scale-105 active:scale-95 font-bold shadow-2xl">
+                  Comprar Entradas
+                </Button>
+              </Link>
               <Link to="/sobre" className="touch-feedback">
-                <Button size="lg" variant="outline" className="text-base sm:text-lg px-8 sm:px-10 border-2 border-white text-white hover:bg-white/20 transition-all hover:scale-105 active:scale-95 font-bold shadow-xl bg-white/5">
+                <Button size="lg" variant="outline" className="text-base sm:text-lg px-8 sm:px-10 border-2 border-white text-white hover:bg-white/10 transition-all hover:scale-105 active:scale-95 font-bold shadow-xl bg-white/5">
                   Saiba Mais
                 </Button>
               </Link>

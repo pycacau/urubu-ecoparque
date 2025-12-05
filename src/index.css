@@ -249,6 +249,13 @@ All colors MUST be HSL.
       hsl(25, 35%, 45%) 100%);
   }
   
+  .gradient-nature-brown {
+    background: linear-gradient(180deg, 
+      hsl(32, 30%, 94%) 0%, 
+      hsl(32, 50%, 85%) 50%, 
+      hsl(32, 70%, 75%) 100%);
+  }
+  
   /* Text effects */
   .text-nature-shadow {
     text-shadow: 2px 2px 4px rgba(34, 197, 94, 0.3);
@@ -271,6 +278,67 @@ All colors MUST be HSL.
   /* Card hover effect */
   .card-hover {
     @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  }
+  
+  /* Wooden sign/plaque style */
+  .wooden-sign {
+    background: linear-gradient(
+      135deg,
+      hsl(32, 45%, 65%) 0%,
+      hsl(32, 50%, 60%) 25%,
+      hsl(32, 45%, 65%) 50%,
+      hsl(32, 40%, 58%) 75%,
+      hsl(32, 45%, 65%) 100%
+    );
+    background-size: 200% 200%;
+    animation: woodGrain 20s ease-in-out infinite;
+    position: relative;
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.4),
+      0 0 0 3px hsl(32, 30%, 50%),
+      inset 0 2px 4px rgba(255, 255, 255, 0.1),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .wooden-sign::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 1px,
+        rgba(0, 0, 0, 0.02) 1px,
+        rgba(0, 0, 0, 0.02) 2px
+      );
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  
+  .wooden-sign::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  
+  @keyframes woodGrain {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
   
   /* Mobile touch feedback */

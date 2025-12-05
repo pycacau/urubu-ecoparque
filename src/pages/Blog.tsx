@@ -1,8 +1,9 @@
-import { Calendar, User, ArrowRight, Instagram } from "lucide-react";
+import { Calendar, User, ArrowRight, Instagram, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { FallingLeaves, NatureParticles } from "@/components/NatureEffects";
 import InstagramFeed from "@/components/InstagramFeed";
 import activitiesImage from "@/assets/activities.jpg";
 import entranceImage from "@/assets/entrance.jpg";
@@ -37,29 +38,52 @@ const Blog = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="pt-32 pb-20">
-        <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-16 animate-fade-in">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <Instagram className="w-8 h-8 text-primary" />
-              <h1 className="text-5xl md:text-6xl font-heading font-bold text-foreground">
-                Atualizações do Instagram
-              </h1>
+      {/* Hero Section */}
+      <section className="relative pt-20 sm:pt-24 md:pt-28 h-[50vh] min-h-[350px] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url(${activitiesImage})`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        <NatureParticles className="opacity-20" />
+        <FallingLeaves className="opacity-15" />
+        <div className="relative z-10 container mx-auto px-4 text-center" style={{ marginTop: '80px' }}>
+          <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-accent to-nature-leaf rounded-2xl mb-3 sm:mb-4 md:mb-6 shadow-2xl border-2 border-white/20">
+            <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-lg" />
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-3 sm:mb-4 md:mb-6 px-2" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.6)' }}>
+            Blog & Atualizações
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-2xl mx-auto px-2 font-medium" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.8), 0 1px 5px rgba(0,0,0,0.6)' }}>
+            Acompanhe nossas últimas postagens e novidades
+          </p>
+        </div>
+      </section>
+      
+      <div className="pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          {/* Instagram Section */}
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <div className="inline-flex items-center gap-3 mb-4 sm:mb-6">
+              <Instagram className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground">
+                @urubuecoparque
+              </h2>
             </div>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Acompanhe nossas últimas postagens do @urubuecoparque
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              Tudo que postamos no Instagram aparece automaticamente aqui!
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+              Acompanhe nossas últimas postagens do Instagram
             </p>
           </div>
 
           {/* Instagram Feed */}
-          <div className="mb-16">
+          <div className="mb-12 sm:mb-16">
             <InstagramFeed 
               username="urubuecoparque"
               accessToken={import.meta.env.VITE_INSTAGRAM_ACCESS_TOKEN || undefined}
@@ -68,17 +92,17 @@ const Blog = () => {
           </div>
 
           {/* Separador */}
-          <div className="relative my-16">
+          <div className="relative my-12 sm:my-16">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-border"></div>
+              <div className="w-full border-t-2 border-primary/20"></div>
             </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="bg-background px-4 text-muted-foreground">Posts em Destaque</span>
+            <div className="relative flex justify-center">
+              <span className="bg-background px-4 sm:px-6 text-sm sm:text-base text-foreground font-semibold">Posts em Destaque</span>
             </div>
           </div>
 
           {/* Featured Post */}
-          <Card className="mb-16 overflow-hidden hover-lift animate-scale-in">
+          <Card className="card-nature mb-12 sm:mb-16 overflow-hidden hover:shadow-xl transition-all duration-300">
             <div className="grid md:grid-cols-2">
               <div className="relative h-80 md:h-auto">
                 <img
@@ -118,9 +142,9 @@ const Blog = () => {
           </Card>
 
           {/* Posts Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {posts.slice(1).map((post, index) => (
-              <Card key={index} className="overflow-hidden hover-lift group cursor-pointer">
+              <Card key={index} className="card-nature overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer">
                 <div className="relative h-64 overflow-hidden">
                   <img
                     src={post.image}

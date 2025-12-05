@@ -1,9 +1,11 @@
-import { Check, Ticket } from "lucide-react";
+import { Check, Ticket, Mountain } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { FallingLeaves, NatureParticles } from "@/components/NatureEffects";
 import { toast } from "sonner";
+import heroImage from "@/assets/hero-ecopark.jpg";
 
 const Ingressos = () => {
   const handleBuyTicket = (tipo: string) => {
@@ -55,71 +57,85 @@ const Ingressos = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="pt-32 pb-20">
-        <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-16 animate-fade-in">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full mb-6 shadow-lg">
-              <Ticket className="w-10 h-10 text-white" />
-            </div>
-            <h1 className="text-5xl md:text-6xl font-heading font-bold text-foreground mb-6">
-              Entradas
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Escolha a entrada perfeita para sua aventura no Urubu Ecoparque
-            </p>
+      {/* Hero Section */}
+      <section className="relative pt-20 sm:pt-24 md:pt-28 h-[50vh] min-h-[350px] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url(${heroImage})`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        <NatureParticles className="opacity-20" />
+        <FallingLeaves className="opacity-15" />
+        <div className="relative z-10 container mx-auto px-4 text-center" style={{ marginTop: '80px' }}>
+          <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-primary to-accent rounded-2xl mb-3 sm:mb-4 md:mb-6 shadow-2xl border-2 border-white/20">
+            <Ticket className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-lg" />
           </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-3 sm:mb-4 md:mb-6 px-2" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.6)' }}>
+            Entradas
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-2xl mx-auto px-2 font-medium" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.8), 0 1px 5px rgba(0,0,0,0.6)' }}>
+            Escolha a entrada perfeita para sua aventura no Urubu Ecoparque
+          </p>
+        </div>
+      </section>
+      
+      <div className="pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20">
+        <div className="container mx-auto px-4 sm:px-6">
 
           {/* Tickets Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16">
             {tickets.map((ticket, index) => (
               <Card
                 key={index}
-                className={`relative p-8 hover-lift transition-all ${
-                  ticket.popular ? 'border-4 border-primary shadow-2xl scale-105' : 'border-2'
+                className={`relative card-nature p-6 sm:p-8 hover:shadow-xl transition-all duration-300 ${
+                  ticket.popular ? 'border-4 border-primary shadow-2xl' : ''
                 }`}
               >
                 {ticket.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-primary to-accent text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 z-10">
+                    <span className="bg-gradient-to-r from-primary to-accent text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg">
                       MAIS POPULAR
                     </span>
                   </div>
                 )}
                 
-                <div className={`w-16 h-16 mb-6 bg-gradient-to-br ${ticket.color} rounded-2xl flex items-center justify-center shadow-lg`}>
-                  <Ticket className="w-8 h-8 text-white" />
+                <div className={`w-14 h-14 sm:w-16 sm:h-16 mb-4 sm:mb-6 bg-gradient-to-br ${ticket.color} rounded-2xl flex items-center justify-center shadow-lg mx-auto`}>
+                  <Ticket className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                 </div>
 
-                <h3 className="text-2xl font-heading font-bold text-foreground mb-2">
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2 text-center">
                   {ticket.name}
                 </h3>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-sm sm:text-base text-muted-foreground mb-4 text-center">
                   {ticket.description}
                 </p>
                 
-                <div className="mb-6">
-                  <span className="text-5xl font-heading font-bold text-foreground">
+                <div className="mb-4 sm:mb-6 text-center">
+                  <span className="text-4xl sm:text-5xl font-heading font-bold text-foreground">
                     {ticket.price}
                   </span>
-                  <span className="text-muted-foreground">/pessoa</span>
+                  <span className="text-sm sm:text-base text-muted-foreground">/pessoa</span>
                 </div>
 
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                   {ticket.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start">
-                      <Check className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
+                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-xs sm:text-sm text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <Button
                   onClick={() => handleBuyTicket(ticket.name)}
-                  className={`w-full font-bold shadow-lg ${
+                  className={`w-full font-bold shadow-lg transition-all ${
                     ticket.popular
                       ? 'bg-gradient-to-r from-primary to-accent text-white hover:opacity-90'
                       : 'bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white'
@@ -133,8 +149,8 @@ const Ingressos = () => {
           </div>
 
           {/* Info Section */}
-          <Card className="p-8 bg-muted/30">
-            <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
+          <Card className="card-nature p-6 sm:p-8 shadow-xl">
+            <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground mb-4 sm:mb-6">
               Informações Importantes
             </h2>
             <div className="grid md:grid-cols-2 gap-6 text-muted-foreground">

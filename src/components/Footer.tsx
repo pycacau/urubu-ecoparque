@@ -158,7 +158,7 @@ const Footer = () => {
             >
               Artur Maciel
             </a>
-            {" "}e pela{" "}
+            {" "}a serviço da{" "}
             <a 
               href="https://www.codexa.dev.br" 
               target="_blank" 
