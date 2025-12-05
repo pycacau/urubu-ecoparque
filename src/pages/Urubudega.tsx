@@ -10,7 +10,6 @@ import activitiesImage from "@/assets/activities.jpg";
 import casalImage from "@/assets/party-venue.jpg";
 import partyImage from "@/assets/comemoração.jpg";
 import entranceImage from "@/assets/entrance.jpg";
-// @ts-ignore
 import urubudegaImage from "@/assets/urubudega.PNG";
 
 const Urubudega = () => {
