@@ -1,8 +1,9 @@
-import { Calendar, User, ArrowRight } from "lucide-react";
+import { Calendar, User, ArrowRight, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import InstagramFeed from "@/components/InstagramFeed";
 import activitiesImage from "@/assets/activities.jpg";
 import entranceImage from "@/assets/entrance.jpg";
 import partyImage from "@/assets/party-venue.jpg";
@@ -10,7 +11,7 @@ import partyImage from "@/assets/party-venue.jpg";
 const Blog = () => {
   const posts = [
     {
-      title: "5 Trilhas Imperdíveis no Urubu Ecopark",
+      title: "5 Trilhas Imperdíveis no Urubu Ecoparque",
       excerpt: "Descubra as melhores trilhas para explorar a natureza e se conectar com o meio ambiente. De iniciantes a experientes, temos opções para todos.",
       image: activitiesImage,
       date: "15 de Março, 2024",
@@ -27,7 +28,7 @@ const Blog = () => {
     },
     {
       title: "Biodiversidade: Conheça as Espécies do Parque",
-      excerpt: "Uma jornada pela fauna e flora do Urubu Ecopark. Descubra as espécies nativas que chamam nosso parque de lar.",
+      excerpt: "Uma jornada pela fauna e flora do Urubu Ecoparque. Descubra as espécies nativas que chamam nosso parque de lar.",
       image: entranceImage,
       date: "5 de Março, 2024",
       author: "Dr. João Santos",
@@ -43,12 +44,37 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-16 animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-heading font-bold text-foreground mb-6">
-              Blog
-            </h1>
+            <div className="inline-flex items-center gap-3 mb-6">
+              <Instagram className="w-8 h-8 text-primary" />
+              <h1 className="text-5xl md:text-6xl font-heading font-bold text-foreground">
+                Atualizações do Instagram
+              </h1>
+            </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Histórias, dicas e novidades do Urubu Ecopark
+              Acompanhe nossas últimas postagens do @urubuecoparque
             </p>
+            <p className="text-sm text-muted-foreground mt-2">
+              Tudo que postamos no Instagram aparece automaticamente aqui!
+            </p>
+          </div>
+
+          {/* Instagram Feed */}
+          <div className="mb-16">
+            <InstagramFeed 
+              username="urubuecoparque"
+              accessToken={import.meta.env.VITE_INSTAGRAM_ACCESS_TOKEN || undefined}
+              limit={12}
+            />
+          </div>
+
+          {/* Separador */}
+          <div className="relative my-16">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-border"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-background px-4 text-muted-foreground">Posts em Destaque</span>
+            </div>
           </div>
 
           {/* Featured Post */}
@@ -83,7 +109,7 @@ const Blog = () => {
                     <span>{posts[0].author}</span>
                   </div>
                 </div>
-                <Button className="w-fit bg-gradient-to-r from-primary to-accent hover:opacity-90">
+                <Button className="w-fit bg-white text-primary hover:bg-white/95 font-bold shadow-lg border-2 border-primary">
                   Ler Mais
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
@@ -124,7 +150,7 @@ const Blog = () => {
                       <span>{post.author}</span>
                     </div>
                   </div>
-                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white transition-colors">
+                  <Button variant="outline" className="w-full bg-white text-primary border-2 border-primary group-hover:bg-primary group-hover:text-white transition-colors font-bold">
                     Ler Mais
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -133,25 +159,6 @@ const Blog = () => {
             ))}
           </div>
 
-          {/* Newsletter */}
-          <Card className="mt-16 p-8 md:p-12 bg-gradient-to-br from-primary via-accent to-nature-leaf text-white text-center">
-            <h2 className="text-3xl font-heading font-bold mb-4">
-              Fique por Dentro das Novidades
-            </h2>
-            <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
-              Assine nossa newsletter e receba dicas exclusivas, promoções e novidades do Urubu Ecopark
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Seu melhor e-mail"
-                className="flex-1 px-4 py-3 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-white"
-              />
-              <Button className="bg-white text-primary hover:bg-white/90">
-                Assinar
-              </Button>
-            </div>
-          </Card>
         </div>
       </div>
 

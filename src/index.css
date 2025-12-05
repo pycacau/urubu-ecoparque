@@ -137,10 +137,27 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-body;
+    /* Melhorar performance de scroll no mobile */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+  }
+
+  /* Otimizações para mobile */
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* Prevenir zoom em inputs no iOS */
+  @media screen and (max-width: 768px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
   }
 }
 
@@ -153,46 +170,113 @@ All colors MUST be HSL.
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
   
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+  .hover-lift-mobile {
+    @apply transition-all duration-300 active:scale-95;
   }
   
-  .animate-slide-up {
-    animation: slideUp 0.8s ease-out forwards;
+  /* Animações otimizadas para mobile */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
-  .animate-scale-in {
-    animation: scaleIn 0.5s ease-out forwards;
+  @media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll {
+      opacity: 1;
+      transform: none;
+    }
   }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  
+  /* Placeholder para imagens */
+  .image-placeholder {
+    @apply bg-gradient-to-br from-muted to-muted/50 rounded-2xl flex items-center justify-center;
+    @apply border-2 border-dashed border-border;
+    @apply min-h-[300px] w-full;
   }
-  to {
-    opacity: 1;
+  
+  .image-placeholder::before {
+    content: "📷";
+    @apply text-6xl opacity-30;
   }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-md border border-border/50;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
+  
+  /* Gradient overlay - melhor contraste */
+  .gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/75;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+  
+  /* Parallax effect */
+  .parallax {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Nature theme gradients */
+  .gradient-nature-sunset {
+    background: linear-gradient(135deg, 
+      hsl(142, 76%, 36%) 0%, 
+      hsl(85, 60%, 45%) 50%, 
+      hsl(32, 55%, 50%) 100%);
+  }
+  
+  .gradient-nature-forest {
+    background: linear-gradient(180deg, 
+      hsl(142, 30%, 94%) 0%, 
+      hsl(142, 50%, 85%) 50%, 
+      hsl(142, 70%, 75%) 100%);
+  }
+  
+  .gradient-nature-earth {
+    background: linear-gradient(135deg, 
+      hsl(32, 55%, 50%) 0%, 
+      hsl(25, 35%, 45%) 100%);
+  }
+  
+  /* Text effects */
+  .text-nature-shadow {
+    text-shadow: 2px 2px 4px rgba(34, 197, 94, 0.3);
+  }
+  
+  /* Card with nature theme */
+  .card-nature {
+    @apply border-2 border-primary/20 bg-gradient-to-br from-card to-muted/30;
+    @apply hover:border-primary/40 hover:shadow-lg transition-all duration-300;
+  }
+  
+  /* Leaf pattern background */
+  .bg-leaf-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(133, 224, 133, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(85, 60%, 45%, 0.1) 0%, transparent 50%);
+  }
+  
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  }
+  
+  /* Mobile touch feedback */
+  @media (hover: none) and (pointer: coarse) {
+    .touch-feedback:active {
+      @apply scale-95 opacity-80;
+    }
   }
 }

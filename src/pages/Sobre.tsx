@@ -13,7 +13,7 @@ const Sobre = () => {
           {/* Header */}
           <div className="text-center mb-16 animate-fade-in">
             <h1 className="text-5xl md:text-6xl font-heading font-bold text-foreground mb-6">
-              Sobre o Urubu Ecopark
+              Sobre o Urubu Ecoparque
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Um sonho de preservação da natureza que se tornou realidade, oferecendo experiências únicas para toda a família
@@ -28,7 +28,7 @@ const Sobre = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                 <p>
-                  O Urubu Ecopark nasceu em 2010 do sonho de uma família apaixonada pela natureza e comprometida com a preservação ambiental. Nossa área de 50 hectares de mata atlântica preservada é um verdadeiro refúgio natural nos arredores de São Paulo.
+                  O Urubu Ecoparque nasceu em 2010 do sonho de uma família apaixonada pela natureza e comprometida com a preservação ambiental. Nossa área de 50 hectares de mata atlântica preservada é um verdadeiro refúgio natural nos arredores de São Paulo.
                 </p>
                 <p>
                   Ao longo dos anos, desenvolvemos uma infraestrutura completa sem perder a essência natural do local. Cada canto foi pensado para proporcionar o máximo de contato com a natureza, respeitando o meio ambiente e a fauna local.
@@ -94,7 +94,7 @@ const Sobre = () => {
           <div className="py-16 bg-gradient-to-br from-primary via-accent to-nature-leaf rounded-3xl animate-scale-in">
             <div className="text-center text-white mb-8">
               <h2 className="text-4xl font-heading font-bold mb-4">
-                Urubu Ecopark em Números
+                Urubu Ecoparque em Números
               </h2>
               <p className="text-xl text-white/90">
                 Mais de uma década criando memórias

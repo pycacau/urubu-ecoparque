@@ -7,12 +7,12 @@ import { toast } from "sonner";
 
 const Ingressos = () => {
   const handleBuyTicket = (tipo: string) => {
-    toast.success(`Ingresso ${tipo} adicionado ao carrinho!`);
+    toast.success(`Entrada ${tipo} adicionada ao carrinho!`);
   };
 
   const tickets = [
     {
-      name: "Ingresso Individual",
+      name: "Entrada Individual",
       price: "R$ 50",
       description: "Perfeito para um dia de aventura",
       features: [
@@ -25,11 +25,11 @@ const Ingressos = () => {
       popular: false
     },
     {
-      name: "Ingresso Família",
+      name: "Entrada Família",
       price: "R$ 150",
       description: "Para até 4 pessoas",
       features: [
-        "Tudo do ingresso individual",
+        "Tudo da entrada individual",
         "Desconto de 25%",
         "Kit lanche incluído",
         "Foto lembrança grátis",
@@ -39,11 +39,11 @@ const Ingressos = () => {
       popular: true
     },
     {
-      name: "Ingresso VIP",
+      name: "Entrada VIP",
       price: "R$ 120",
       description: "Experiência completa",
       features: [
-        "Tudo do ingresso individual",
+        "Tudo da entrada individual",
         "Guia especializado",
         "Almoço incluso",
         "Acesso a áreas exclusivas",
@@ -66,10 +66,10 @@ const Ingressos = () => {
               <Ticket className="w-10 h-10 text-white" />
             </div>
             <h1 className="text-5xl md:text-6xl font-heading font-bold text-foreground mb-6">
-              Ingressos
+              Entradas
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Escolha o ingresso perfeito para sua aventura no Urubu Ecopark
+              Escolha a entrada perfeita para sua aventura no Urubu Ecoparque
             </p>
           </div>
 
@@ -119,10 +119,10 @@ const Ingressos = () => {
 
                 <Button
                   onClick={() => handleBuyTicket(ticket.name)}
-                  className={`w-full ${
+                  className={`w-full font-bold shadow-lg ${
                     ticket.popular
-                      ? 'bg-gradient-to-r from-primary to-accent hover:opacity-90'
-                      : ''
+                      ? 'bg-gradient-to-r from-primary to-accent text-white hover:opacity-90'
+                      : 'bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white'
                   }`}
                   size="lg"
                 >

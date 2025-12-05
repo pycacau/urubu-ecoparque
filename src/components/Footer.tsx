@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Mail, MapPin, Phone, Leaf } from "lucide-react";
+import logoImage from "@/assets/favicon.png";
 
 const Footer = () => {
   return (
@@ -9,15 +10,32 @@ const Footer = () => {
           {/* Logo e Descrição */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
-                <Leaf className="w-6 h-6 text-white" />
+              <div className="relative w-10 h-10 flex items-center justify-center">
+                <img
+                  src={logoImage}
+                  alt="Urubu Ecoparque Logo"
+                  className="w-full h-full object-contain drop-shadow-sm"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'flex';
+                  }}
+                />
+                <div 
+                  className="w-full h-full bg-gradient-to-br from-primary to-accent rounded-full items-center justify-center hidden"
+                  style={{ display: 'none' }}
+                >
+                  <Leaf className="w-6 h-6 text-white" />
+                </div>
               </div>
+              {/* Texto da logo - opcional, pode ser removido se a logo já tiver texto */}
               <div>
                 <span className="text-xl font-heading font-bold text-foreground">
                   Urubu
                 </span>
                 <span className="text-xl font-heading font-bold text-primary ml-1">
-                  Ecopark
+                  Ecoparque
                 </span>
               </div>
             </div>
@@ -64,10 +82,10 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/ingressos"
+                  to="/entradas"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
-                  Ingressos
+                  Entradas
                 </Link>
               </li>
               <li>
@@ -120,7 +138,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail size={18} className="text-primary flex-shrink-0" />
-                <span>contato@urubuecopark.com.br</span>
+                <span>contato@urubuecoparque.com.br</span>
               </li>
             </ul>
           </div>
@@ -128,7 +146,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>
-            © {new Date().getFullYear()} Urubu Ecopark. Todos os direitos reservados.
+            © {new Date().getFullYear()} Urubu Ecoparque. Todos os direitos reservados.
           </p>
         </div>
       </div>

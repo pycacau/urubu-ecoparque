@@ -218,7 +218,7 @@ const Festas = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-gradient-to-r from-secondary to-nature-brown hover:opacity-90"
+                className="w-full bg-gradient-to-r from-secondary to-nature-brown text-white hover:opacity-90 font-bold shadow-xl"
               >
                 Solicitar Orçamento
               </Button>
