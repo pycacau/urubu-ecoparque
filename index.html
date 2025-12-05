@@ -26,5 +26,50 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Remover qualquer elemento da Lovable que possa ser injetado
+      (function() {
+        function removeLovableElements() {
+          // Remover por atributos
+          document.querySelectorAll('[data-lovable], [class*="lovable"], [id*="lovable"]').forEach(el => el.remove());
+          
+          // Remover links para Lovable
+          document.querySelectorAll('a[href*="lovable"], a[href*="Lovable"]').forEach(el => el.remove());
+          
+          // Remover imagens da Lovable
+          document.querySelectorAll('img[src*="lovable"], img[alt*="Lovable"], img[alt*="lovable"]').forEach(el => el.remove());
+          
+          // Remover elementos com texto "Lovable" ou "lovable"
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+          let node;
+          while (node = walker.nextNode()) {
+            if (node.textContent && /lovable/i.test(node.textContent)) {
+              const parent = node.parentElement;
+              if (parent && (parent.tagName === 'A' || parent.tagName === 'SPAN' || parent.tagName === 'DIV')) {
+                if (/lovable/i.test(parent.textContent || '')) {
+                  parent.remove();
+                }
+              }
+            }
+          }
+        }
+        
+        // Executar imediatamente
+        removeLovableElements();
+        
+        // Observar mudanças no DOM
+        const observer = new MutationObserver(removeLovableElements);
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+        
+        // Executar após o carregamento completo
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', removeLovableElements);
+        }
+        window.addEventListener('load', removeLovableElements);
+      })();
+    </script>
   </body>
 </html>

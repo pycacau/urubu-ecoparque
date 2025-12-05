@@ -279,4 +279,25 @@ All colors MUST be HSL.
       @apply scale-95 opacity-80;
     }
   }
+  
+  /* Ocultar qualquer logo ou branding da Lovable */
+  [data-lovable],
+  [class*="lovable"],
+  [class*="Lovable"],
+  [id*="lovable"],
+  [id*="Lovable"],
+  a[href*="lovable"],
+  a[href*="Lovable"],
+  img[src*="lovable"],
+  img[src*="Lovable"],
+  img[alt*="Lovable"],
+  img[alt*="lovable"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+  }
 }
