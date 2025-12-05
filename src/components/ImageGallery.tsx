@@ -127,6 +127,7 @@ const ImageGallery = ({ images, title, columns = 3 }: ImageGalleryProps) => {
                 style={{
                   scrollbarWidth: 'none',
                   msOverflowStyle: 'none',
+                  WebkitOverflowScrolling: 'touch',
                 }}
               >
                 {/* Duplicar imagens para loop infinito */}
@@ -139,7 +140,10 @@ const ImageGallery = ({ images, title, columns = 3 }: ImageGalleryProps) => {
                       const realIndex = index % images.length;
                       setSelectedImage(realIndex);
                     }}
-                    style={{ width: '400px', height: '400px' }}
+                    style={{ 
+                      width: 'min(400px, 85vw)', 
+                      height: 'min(400px, 85vw)',
+                    }}
                   >
                     <img
                       src={image}

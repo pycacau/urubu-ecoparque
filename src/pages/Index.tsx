@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ImageGallery from "@/components/ImageGallery";
 import { FallingLeaves, NatureParticles, WaterWaves } from "@/components/NatureEffects";
-import { Calendar, PartyPopper, Mountain, Trees, Waves, Bird, ShoppingBag, Coffee } from "lucide-react";
+import { Calendar, PartyPopper, Mountain, Trees, Waves, Bird, ShoppingBag, Coffee, Utensils, Plane, Eye, Baby, Sprout } from "lucide-react";
 import heroImage from "@/assets/hero-ecopark.jpg";
 import activitiesImage from "@/assets/activities.jpg";
 import casalImage from "@/assets/party-venue.jpg";
@@ -15,12 +15,12 @@ import trilha from "@/assets/trilha.jpg";
 import entranceImage from "@/assets/entrance.jpg";
 // @ts-ignore
 import urubudegaImage from "@/assets/urubudega.PNG";
-import logoImage from "@/assets/favicon.png";
 import { cn } from "@/lib/utils";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
+  const parallaxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -43,21 +43,17 @@ const Index = () => {
       }
     });
 
-    // Parallax effect - apenas se estiver no cliente
-    if (typeof window !== 'undefined') {
+    // Parallax effect melhorado
+    if (typeof window !== 'undefined' && parallaxRef.current) {
       const handleScroll = () => {
         try {
           const scrolled = window.pageYOffset || window.scrollY || 0;
-          const parallaxElements = document.querySelectorAll('[data-parallax-speed]');
-          parallaxElements.forEach((element) => {
-            try {
-              const speed = parseFloat(element.getAttribute('data-parallax-speed') || '0');
-              const yPos = -(scrolled * speed);
-              (element as HTMLElement).style.transform = `translate3d(0, ${yPos}px, 0)`;
-            } catch (e) {
-              // Silenciar erros de parallax
-            }
-          });
+          const speed = 0.5;
+          const yPos = scrolled * speed;
+          
+          if (parallaxRef.current) {
+            parallaxRef.current.style.transform = `translate3d(0, ${yPos}px, 0)`;
+          }
         } catch (e) {
           // Silenciar erros de scroll
         }
@@ -78,24 +74,44 @@ const Index = () => {
 
   const features = [
     {
-      icon: Trees,
-      title: "Trilhas Ecológicas",
-      description: "Explore a natureza em trilhas seguras e bem sinalizadas",
+      icon: Utensils,
+      title: "RESTAURANTE",
+      description: "Sabores regionais em meio à natureza",
+    },
+    {
+      icon: ShoppingBag,
+      title: "URUBUDEGA",
+      description: "Lojinha com produtos naturais e artesanatos",
+    },
+    {
+      icon: Plane,
+      title: "VÔO LIVRE",
+      description: "Experiências de voo livre e aventura",
+    },
+    {
+      icon: Eye,
+      title: "MIRANTES",
+      description: "Vistas panorâmicas deslumbrantes",
     },
     {
       icon: Waves,
-      title: "Cachoeiras",
+      title: "CACHOEIRAS",
       description: "Banhos refrescantes em cachoeiras naturais",
     },
     {
-      icon: Mountain,
-      title: "Aventura",
-      description: "Tirolesa, escalada e muito mais",
+      icon: Trees,
+      title: "TRILHAS",
+      description: "Explore a natureza em trilhas seguras e bem sinalizadas",
     },
     {
-      icon: Bird,
-      title: "Observação de Aves",
-      description: "Conheça a fauna local com guias especializados",
+      icon: Baby,
+      title: "PARQUINHO",
+      description: "Diversão garantida para as crianças",
+    },
+    {
+      icon: Sprout,
+      title: "VIVEIRO DE MUDAS",
+      description: "Conheça e adquira mudas de plantas nativas",
     },
   ];
 
@@ -117,11 +133,12 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[20s] ease-out hover:scale-110 parallax"
+          ref={parallaxRef}
+          className="absolute inset-0 bg-cover bg-center will-change-transform"
           style={{ 
             backgroundImage: `url(${heroImage})`,
+            transform: 'translate3d(0, 0px, 0)',
           }}
-          data-parallax-speed="0.5"
         >
           <div className="gradient-overlay"></div>
           {/* Overlay mais claro para clarear a imagem */}
@@ -138,24 +155,17 @@ const Index = () => {
           <div className="animate-fade-in-up">
             {/* Overlay escuro para melhor contraste do texto */}
             <div className="inline-block bg-black/60 backdrop-blur-md px-8 py-6 rounded-2xl mb-6 border border-white/20 shadow-2xl">
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <img 
-                  src={logoImage} 
-                  alt="Logo Urubu Ecoparque" 
-                  className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
-                />
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white drop-shadow-2xl animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-                  Urubu Ecoparque
-                </h1>
-              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white drop-shadow-2xl animate-fade-in-up mb-4" style={{ animationDelay: "0.1s" }}>
+                Urubu Ecoparque
+              </h1>
               <p className="text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto text-white/95 drop-shadow-lg font-medium animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
                 Viva experiências únicas em contato com a natureza. Diversão, aventura e memórias inesquecíveis!
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-              <Link to="/festas" className="touch-feedback">
+              <Link to="/entradas" className="touch-feedback">
                 <Button size="lg" variant="outline" className="text-base sm:text-lg px-8 sm:px-10 bg-primary/90 backdrop-blur-sm border-2 border-white text-white hover:bg-primary transition-all hover:scale-105 active:scale-95 shadow-xl font-bold">
-                  Agendar Festa
+                  Entradas
                 </Button>
               </Link>
             </div>
@@ -183,7 +193,7 @@ const Index = () => {
             isVisible.features ? "animate-fade-in-up opacity-100" : "opacity-0"
           )}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
-              O que oferecemos
+              O que temos
             </h2>
             <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
               Descubra todas as atividades e experiências que preparamos para você
@@ -236,16 +246,19 @@ const Index = () => {
               <p className="text-muted-foreground text-base sm:text-lg mb-6">
                 No Urubu Ecoparque, oferecemos atividades para todas as idades. Desde trilhas leves até aventuras radicais, sempre em harmonia com a natureza.
               </p>
-              <ul className="space-y-3 mb-6 sm:mb-8">
-                {["Trilhas guiadas", "Banho de cachoeira", "Tirolesa", "Área de piquenique", "Parquinho infantil"].map((item, i) => (
-                  <li key={i} className="flex items-center text-foreground text-sm sm:text-base">
-                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-primary/20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse-slow" style={{ animationDelay: `${i * 0.1}s` }}></div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 sm:mb-8">
+                {features.map((feature, i) => (
+                  <div key={i} className="flex items-start text-foreground text-sm sm:text-base">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-primary/20 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
+                      <feature.icon className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                     </div>
-                    {item}
-                  </li>
+                    <div>
+                      <span className="font-semibold block">{feature.title}</span>
+                      <span className="text-muted-foreground text-xs sm:text-sm">{feature.description}</span>
+                    </div>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
             <div className={cn(
               "relative transition-all duration-700",

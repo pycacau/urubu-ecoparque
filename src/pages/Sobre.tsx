@@ -28,13 +28,13 @@ const Sobre = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                 <p>
-                  O Urubu Ecoparque nasceu em 2010 do sonho de uma família apaixonada pela natureza e comprometida com a preservação ambiental. Nossa área de 50 hectares de mata atlântica preservada é um verdadeiro refúgio natural nos arredores de São Paulo.
+                O Urubu Ecoparque surgiu do desejo de transformar a Serra da Ibiapaba – CE em um ponto de encontro entre aventura, natureza e contemplação. O local, que abriga a mais alta rampa de voo livre do Norte–Nordeste, tornou-se um dos cenários mais impressionantes da região, a mais de 900 metros de altitude.
                 </p>
                 <p>
-                  Ao longo dos anos, desenvolvemos uma infraestrutura completa sem perder a essência natural do local. Cada canto foi pensado para proporcionar o máximo de contato com a natureza, respeitando o meio ambiente e a fauna local.
+                Desde o início, o propósito sempre foi claro: valorizar a riqueza natural da serra e oferecer uma experiência inesquecível a quem nos visita. Com trilhas, cachoeiras, área de camping, restaurante e mirantes panorâmicos, cada espaço foi pensado para aproximar visitantes da beleza bruta e preservada da Ibiapaba.
                 </p>
                 <p>
-                  Hoje, somos referência em turismo ecológico na região, recebendo milhares de visitantes anualmente que buscam momentos de lazer, aventura e reconexão com a natureza.
+                Hoje, o Urubu Ecoparque se consolida como referência em turismo ecológico e de aventura, atraindo visitantes de todo o país que buscam lazer, esportes ao ar livre, liberdade e um contato genuíno com a natureza.
                 </p>
               </div>
             </Card>

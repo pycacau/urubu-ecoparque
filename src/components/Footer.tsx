@@ -50,7 +50,9 @@ const Footer = () => {
                 <Facebook size={18} />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/urubuecoparque"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-muted hover:bg-primary hover:text-white rounded-full flex items-center justify-center transition-colors"
               >
                 <Instagram size={18} />
@@ -113,12 +115,8 @@ const Footer = () => {
               Horário de Funcionamento
             </h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Segunda a Sexta: 8h - 18h</li>
-              <li>Sábado: 8h - 19h</li>
-              <li>Domingo: 8h - 19h</li>
-              <li className="text-primary font-medium pt-2">
-                Feriados: Consulte
-              </li>
+              <li>Domingo a Quarta: 9h às 18h</li>
+              <li>Quinta a Sábado: 9h às 23h</li>
             </ul>
           </div>
 
@@ -130,23 +128,45 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3 text-sm text-muted-foreground">
                 <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
-                <span>Estrada da Natureza, 1000<br />São Paulo, SP</span>
+                <span>Sitio Correios - Zona Rural<br />Guaraciaba do Norte - CE</span>
               </li>
               <li className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone size={18} className="text-primary flex-shrink-0" />
-                <span>(11) 98765-4321</span>
+                <span>(85) 99731-0329</span>
               </li>
               <li className="flex items-center space-x-3 text-sm text-muted-foreground">
-                <Mail size={18} className="text-primary flex-shrink-0" />
-                <span>contato@urubuecoparque.com.br</span>
+                <Instagram size={18} className="text-primary flex-shrink-0" />
+                <a href="https://instagram.com/urubuecoparque" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  @urubuecoparque
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>
+          <p className="mb-2">
             © {new Date().getFullYear()} Urubu Ecoparque. Todos os direitos reservados.
+          </p>
+          <p>
+            Desenvolvido por{" "}
+            <a 
+              href="https://arturmaciel.pages.dev" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-medium"
+            >
+              Artur Maciel
+            </a>
+            {" "}e pela{" "}
+            <a 
+              href="https://www.codexa.dev.br" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-medium"
+            >
+              Codexa
+            </a>
           </p>
         </div>
       </div>
