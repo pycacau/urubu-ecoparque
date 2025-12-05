@@ -1,73 +1,118 @@
-# Welcome to your Lovable project
+# Urubu Ecoparque - Website
 
-## Project info
+Website oficial do Urubu Ecoparque, desenvolvido para promover experiências únicas em contato com a natureza.
 
-**URL**: https://lovable.dev/projects/87c1a85b-474b-4212-8577-05d9eaeb9c15
+## 🚀 Sobre o Projeto
 
-## How can I edit this code?
+Este projeto é o website oficial do Urubu Ecoparque, um parque ecológico que oferece diversas atividades, festas, trilhas e muito mais em meio à natureza.
 
-There are several ways of editing your application.
+## ✨ Funcionalidades
 
-**Use Lovable**
+- **Design Responsivo**: Totalmente adaptado para dispositivos móveis, tablets e desktops
+- **Galeria de Fotos**: Carrossel automático com imagens do parque
+- **Cardápio Completo**: Página dedicada à Urubudega com cardápio completo
+- **Integração Instagram**: Feed automático do Instagram (@urubuecoparque)
+- **Animações Suaves**: Efeitos parallax e animações de natureza
+- **Tema Natureza**: Design inspirado na natureza com cores e elementos temáticos
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/87c1a85b-474b-4212-8577-05d9eaeb9c15) and start prompting.
+## 🛠️ Tecnologias Utilizadas
 
-Changes made via Lovable will be committed automatically to this repo.
+- **React** - Biblioteca JavaScript para construção de interfaces
+- **TypeScript** - Superset do JavaScript com tipagem estática
+- **Tailwind CSS** - Framework CSS utilitário
+- **Vite** - Build tool e dev server
+- **React Router** - Roteamento para aplicações React
+- **Shadcn UI** - Componentes UI modernos e acessíveis
+- **Lucide React** - Ícones SVG
 
-**Use your preferred IDE**
+## 📦 Instalação
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Clone o repositório:
+```bash
+git clone https://github.com/pycacau/urubu-ecoparque.git
+cd urubu-ecoparque
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. Instale as dependências:
+```bash
+npm install
+```
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Inicie o servidor de desenvolvimento:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Abra seu navegador em `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🏗️ Build para Produção
 
-**Use GitHub Codespaces**
+Para criar uma build de produção:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run build
+```
 
-## What technologies are used for this project?
+Os arquivos serão gerados na pasta `dist/`.
 
-This project is built with:
+## 📝 Estrutura do Projeto
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+urubu-ecoparque/
+├── public/          # Arquivos estáticos
+├── src/
+│   ├── assets/      # Imagens e recursos
+│   ├── components/  # Componentes React
+│   ├── pages/       # Páginas da aplicação
+│   ├── lib/         # Utilitários
+│   └── index.css    # Estilos globais
+├── index.html       # HTML principal
+└── vite.config.ts   # Configuração do Vite
+```
 
-## How can I deploy this project?
+## 📄 Páginas
 
-Simply open [Lovable](https://lovable.dev/projects/87c1a85b-474b-4212-8577-05d9eaeb9c15) and click on Share -> Publish.
+- **Início** (`/`) - Página principal com hero, features e seções principais
+- **Sobre** (`/sobre`) - Informações sobre o parque
+- **Entradas** (`/entradas`) - Opções de entradas e preços
+- **Festas** (`/festas`) - Informações sobre eventos e festas
+- **Urubudega** (`/urubudega`) - Cardápio completo do restaurante
+- **Blog** (`/blog`) - Feed do Instagram e posts em destaque
 
-## Can I connect a custom domain to my Lovable project?
+## 🔧 Configuração
 
-Yes, you can!
+### Instagram API
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Para usar o feed do Instagram, configure a variável de ambiente:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```env
+VITE_INSTAGRAM_ACCESS_TOKEN=seu_token_aqui
+```
+
+Veja mais detalhes em `CONFIGURAR_INSTAGRAM.md`.
+
+## 📱 Responsividade
+
+O site é totalmente responsivo e otimizado para:
+- 📱 Mobile (320px+)
+- 📱 Tablet (768px+)
+- 💻 Desktop (1024px+)
+- 🖥️ Large Desktop (1280px+)
+
+## 🎨 Personalização
+
+As cores e temas podem ser personalizados em:
+- `src/tailwind.config.ts` - Configuração do Tailwind
+- `src/index.css` - Variáveis CSS e estilos globais
+
+## 📄 Licença
+
+Este projeto é propriedade do Urubu Ecoparque.
+
+## 👨‍💻 Desenvolvido por
+
+Desenvolvido com dedicação para o Urubu Ecoparque.
+
+---
+
+**Urubu Ecoparque** - Viva experiências únicas em contato com a natureza! 🌿
