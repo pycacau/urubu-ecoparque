@@ -12,6 +12,7 @@ interface ImageGalleryProps {
 const ImageGallery = ({ images, title, columns = 3 }: ImageGalleryProps) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const galleryRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);

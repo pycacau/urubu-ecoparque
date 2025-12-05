@@ -13,6 +13,7 @@ import casalImage from "@/assets/party-venue.jpg";
 import partyImage from "@/assets/comemoração.jpg";
 import trilha from "@/assets/trilha.jpg";
 import entranceImage from "@/assets/entrance.jpg";
+// @ts-ignore
 import urubudegaImage from "@/assets/urubudega.PNG";
 import logoImage from "@/assets/favicon.png";
 import { cn } from "@/lib/utils";
